@@ -13,8 +13,6 @@ services:
       - NODE_ENV=production
       - UV_THREADPOOL_SIZE=128
       - NODE_OPTIONS=--max-old-space-size=4096
-    env_file:
-      - ../.env                            # Load from .env file in parent directory
     restart: unless-stopped
     volumes:
       - ../logs:/app/logs                  # Persistent logs
