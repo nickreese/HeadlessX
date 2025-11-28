@@ -15,7 +15,7 @@ services:
       - NODE_OPTIONS=--max-old-space-size=4096
     restart: unless-stopped
     volumes:
-      - ../logs:/app/logs                  # Persistent logs
+      - /logs:/app/logs                  # Persistent logs
       - /tmp:/tmp                          # Temporary files
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
@@ -31,13 +31,5 @@ services:
         reservations:
           memory: 1G
           cpus: '1.0'
-    networks:
-      - headlessx-network
     security_opt:
       - no-new-privileges:true
-
-networks:
-  headlessx-network:
-    driver: bridge
-    driver_opts:
-      com.docker.network.bridge.name: headlessx0
